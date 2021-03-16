@@ -178,6 +178,12 @@ public class DefaultDockerClientConfigTest {
                 null);
     }
 
+    @Test(expected = DockerClientException.class)
+    public void testNoHostScheme() throws Exception {
+        new DefaultDockerClientConfig(URI.create("foo"), "dockerConfig", "apiVersion", "registryUrl", "registryUsername", "registryPassword", "registryEmail",
+            null);
+    }
+
     @Test()
     public void testTcpHostScheme() throws Exception {
         new DefaultDockerClientConfig(URI.create("tcp://foo"), "dockerConfig", "apiVersion", "registryUrl", "registryUsername", "registryPassword", "registryEmail",
@@ -194,6 +200,12 @@ public class DefaultDockerClientConfigTest {
     public void testNpipeHostScheme() throws Exception {
         new DefaultDockerClientConfig(URI.create("npipe://foo"), "dockerConfig", "apiVersion", "registryUrl", "registryUsername", "registryPassword", "registryEmail",
                 null);
+    }
+
+    @Test()
+    public void testSshHostScheme() throws Exception {
+        new DefaultDockerClientConfig(URI.create("ssh://foo"), "dockerConfig", "apiVersion", "registryUrl", "registryUsername", "registryPassword", "registryEmail",
+            null);
     }
 
     @Test
